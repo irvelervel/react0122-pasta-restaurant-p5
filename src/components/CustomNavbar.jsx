@@ -1,10 +1,13 @@
 import { Navbar, Nav } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 // Link genera un tag <a /> speciale, che grazie alla prop "to" redireziona
 // l'utente alla rotta desiderata senza far ri-aggiornare il browser
 
 const CustomNavbar = (props) => {
+  const location = useLocation()
+  console.log('LOCATION', location)
+
   return (
     <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
       <Link to="/">
@@ -13,9 +16,31 @@ const CustomNavbar = (props) => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="ml-auto">
-          <Nav.Link href="#menu">Menu</Nav.Link>
-          <Nav.Link href="/reservations">Prenotazioni</Nav.Link>
-          <Nav.Link href="#contatti">Contatti</Nav.Link>
+          <Link
+            className={
+              location.pathname === '/menu' ? 'nav-link active' : 'nav-link'
+            }
+            to="/menu"
+          >
+            Menu
+          </Link>
+          <Link
+            className={
+              'nav-link' + (location.pathname === '/new' ? ' active' : '')
+            }
+            to="/new"
+          >
+            Prenota
+          </Link>
+          <Link
+            className={
+              'nav-link' +
+              (location.pathname === '/reservations' ? ' active' : '')
+            }
+            to="/reservations"
+          >
+            Admin
+          </Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
