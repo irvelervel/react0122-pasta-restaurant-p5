@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { Container, Row, Col, Spinner, Badge, Alert } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 import menu from '../data/menu.json'
+import DishComments from './DishComments'
 
 const PastaDetails = () => {
   const params = useParams()
@@ -30,11 +31,13 @@ const PastaDetails = () => {
         <Col className="text-center" xs={12} md={6}>
           {pasta ? (
             <div>
-              <img src={pasta.image} alt={pasta.name} />
+              <img src={pasta.image} alt={pasta.name} className="img-fluid" />
               <h2>{pasta.name}</h2>
               <p>{pasta.description}</p>
               <Badge variant="danger">{pasta.label}</Badge>
               <Badge variant="warning">{pasta.price}</Badge>
+              {/* le recensioni vanno qui */}
+              <DishComments selectedPasta={pasta} width={12} />
             </div>
           ) : typeof pasta === 'undefined' ? (
             <Alert variant="danger">Pasta non trovata</Alert>

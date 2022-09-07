@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import { Container, Row, Col, Carousel, ListGroup } from 'react-bootstrap'
+import { Container, Row, Col, Carousel } from 'react-bootstrap'
 import menu from '../data/menu.json'
+import ClassComponent from './ClassComponent'
+import DishComments from './DishComments'
 
 // per fare in modo che la lista rispecchi in ogni momento le recensioni
 // dell'ultima pasta selezionata (cliccata), ho bisogno di inserire nel
@@ -60,17 +62,8 @@ const Home = () => {
           </Carousel>
         </Col>
       </Row>
-      <Row className="justify-content-center mt-4">
-        <Col xs={12} md={6} className="text-center">
-          <ListGroup>
-            {selectedPasta?.comments.map((review) => (
-              <ListGroup.Item key={review.id}>
-                {review.author} - {review.comment}
-              </ListGroup.Item>
-            ))}
-          </ListGroup>
-        </Col>
-      </Row>
+      <DishComments selectedPasta={selectedPasta} width={6} />
+      {/* <ClassComponent batch="react0122" /> */}
     </Container>
   )
 }
