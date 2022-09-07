@@ -7,6 +7,7 @@ import ReservationList from './components/ReservationList'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import NotFound from './components/NotFound'
 import Menu from './components/Menu'
+import PastaDetails from './components/PastaDetails'
 
 // BrowserRouter è un componente che abilita le funzioni di routing ai
 // suoi children; non si traspone nella pagina con nessun elemento del DOM
@@ -31,6 +32,7 @@ function App() {
             element={<ReservationForm customClassName="mt-1" />}
           />
           <Route path="/menu" element={<Menu />} />
+          <Route path="/detail/:pastaId" element={<PastaDetails />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
